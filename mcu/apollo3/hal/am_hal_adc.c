@@ -478,7 +478,8 @@ am_hal_adc_configure_slot(void *pHandle,
     //
     // Update the nubmer of slots configured.
     //
-    g_ADCSlotsConfigured++;
+    pSlotConfig->bEnabled ? g_ADCSlotsConfigured++ : g_ADCSlotsConfigured--;
+    // g_ADCSlotsConfigured++;
 
     //
     // Return the status.
@@ -522,18 +523,18 @@ am_hal_adc_configure_dma(void *pHandle,
     //
     ui32Config |= _VAL2FLD(ADC_DMACFG_DPWROFF, 0);      // DPWROFF not supported!
 
-    //
-    // Configure the data to be transferred.
-    //
-    if ( g_ADCSlotsConfigured > 1 )
-    {
+    // //
+    // // Configure the data to be transferred.
+    // //
+    // if ( g_ADCSlotsConfigured > 1 )
+    // {
         // Need slot number to distinguish between slot results.
         ui32Config |= _VAL2FLD(ADC_DMACFG_DMAMSK, ADC_DMACFG_DMAMSK_DIS);
-    }
-    else
-    {
-        ui32Config |= _VAL2FLD(ADC_DMACFG_DMAMSK, ADC_DMACFG_DMAMSK_EN);
-    }
+    // }
+    // else
+    // {
+    //     ui32Config |= _VAL2FLD(ADC_DMACFG_DMAMSK, ADC_DMACFG_DMAMSK_EN);
+    // }
 
     //
     // Enable DMA Halt on Status (DMAERR or DMACPL) by default.
