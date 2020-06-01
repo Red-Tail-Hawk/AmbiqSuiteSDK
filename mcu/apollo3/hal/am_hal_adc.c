@@ -478,8 +478,7 @@ am_hal_adc_configure_slot(void *pHandle,
     //
     // Update the nubmer of slots configured.
     //
-    pSlotConfig->bEnabled ? g_ADCSlotsConfigured++ : g_ADCSlotsConfigured--;
-    // g_ADCSlotsConfigured++;
+    g_ADCSlotsConfigured++;
 
     //
     // Return the status.
