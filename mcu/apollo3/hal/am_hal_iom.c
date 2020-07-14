@@ -161,7 +161,7 @@ typedef struct
     uint32_t                    ui32SETCLRVal;
 } am_hal_iom_cq_loop_entry_t;
 
-#define AM_HAL_IOM_MAX_PENDING_TRANSACTIONS      256 // Must be power of 2 for the implementation below
+#define AM_HAL_IOM_MAX_PENDING_TRANSACTIONS      4 // Must be power of 2 for the implementation below
 #define AM_HAL_IOM_CQUPD_INT_FLAG                (0x00000001)
 
 typedef struct
