@@ -312,6 +312,10 @@ extern uint32_t am_hal_uart_power_control(void *pHandle,
 extern uint32_t am_hal_uart_configure(void *pHandle,
                                       const am_hal_uart_config_t *psConfig);
 
+
+extern uint32_t am_hal_uart_deconfigure(void *pHandle);
+
+
 //*****************************************************************************
 //
 //! @brief Transfer data through the UART interface.

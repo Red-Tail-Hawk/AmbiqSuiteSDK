@@ -447,6 +447,40 @@ am_hal_uart_configure(void *pHandle, const am_hal_uart_config_t *psConfig)
 
 //*****************************************************************************
 //
+// UART deconfiguration.
+//
+//*****************************************************************************
+uint32_t
+am_hal_uart_deconfigure(void *pHandle)
+{
+    am_hal_uart_state_t *pState = (am_hal_uart_state_t *) pHandle;
+    uint32_t ui32Module = pState->ui32Module;
+
+    uint32_t ui32ErrorStatus;
+
+    //
+    // Check to make sure this is a valid handle.
+    //
+    if (!AM_HAL_UART_CHK_HANDLE(pHandle))
+    {
+        return AM_HAL_STATUS_INVALID_HANDLE;
+    }
+
+    AM_CRITICAL_BEGIN
+
+    //
+    // Reset the CR register to a known value.
+    //
+    UARTn(ui32Module)->CR = 0;
+
+    AM_CRITICAL_END
+    
+    return AM_HAL_STATUS_SUCCESS;
+}
+    
+
+//*****************************************************************************
+//
 // Allows the UART HAL to use extra space to store TX and RX data.
 //
 //*****************************************************************************
